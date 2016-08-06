@@ -1,0 +1,12 @@
+angular.module('zhufengchat',['ngRoute'])
+    .config(function($routeProvider){//开始配置路由
+        $routeProvider.when('/',{
+            templateUrl:'/pages/login.html',
+            controller:'LoginCtrl'
+        }).when('/rooms',{
+            templateUrl:'/pages/rooms.html',
+            controller:'RoomsCtrl'
+        }).otherwise({
+            redirectTo:'/'
+        });
+});
