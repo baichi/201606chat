@@ -1,6 +1,7 @@
 angular.module('zhufengchat').controller('RoomsCtrl',function($scope,$http){
   //  rooms 根据关键字过滤之后过滤出来的房间 _rooms原始的房间
   $scope.rooms = $scope._rooms = [];
+
   $http({
       url:'/room/list',
       method:'GET'
@@ -10,6 +11,12 @@ angular.module('zhufengchat').controller('RoomsCtrl',function($scope,$http){
       alert(data);
   });
 
+  $scope.filter = function() {
+      $scope.rooms  = $scope._rooms.filter(function(room){
+          return room.name.indexOf($scope.keyword)!=-1;
+      });
+  }
+
   $scope.createRoom = function(){
       $http({
           url:'/room/add',
@@ -17,7 +24,10 @@ angular.module('zhufengchat').controller('RoomsCtrl',function($scope,$http){
           data:{name:$scope.keyword}
       }).success(function(room){
           $scope._rooms.push(room);
+          $scope.filter();
       })
   }
+
+
 
 });

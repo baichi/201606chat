@@ -8,6 +8,7 @@ var app = express();
 //指定public目录作为静态文件根目录
 app.use(express.static(path.join(__dirname,'public')));
 app.use(express.static(path.join(__dirname,'app')));
+
 app.get('/',function(req,res){
    res.sendFile('app/index.html',{root:__dirname});
 });
