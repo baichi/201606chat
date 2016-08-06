@@ -6,6 +6,9 @@ angular.module('zhufengchat',['ngRoute'])
         }).when('/rooms',{
             templateUrl:'/pages/rooms.html',
             controller:'RoomsCtrl'
+        }).when('/rooms/:id',{
+            templateUrl:'/pages/room.html',
+            controller:'RoomCtrl'
         }).otherwise({
             redirectTo:'/'
         });

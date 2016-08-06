@@ -1,4 +1,4 @@
-angular.module('zhufengchat').controller('RoomsCtrl',function($scope,$http){
+angular.module('zhufengchat').controller('RoomsCtrl',function($scope,$http,$location){
   //  rooms 根据关键字过滤之后过滤出来的房间 _rooms原始的房间
   $scope.rooms = $scope._rooms = [];
 
@@ -27,7 +27,9 @@ angular.module('zhufengchat').controller('RoomsCtrl',function($scope,$http){
           $scope.filter();
       })
   }
-
+    $scope.join = function(roomId){
+        $location.path('/rooms/'+roomId);
+    }
 
 
 });
