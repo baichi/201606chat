@@ -11,4 +11,15 @@ router.get('/list',function(req,res){
     })
 });
 
+router.post('/add',function(req,res){
+    var room = req.body;
+    Models.Room.create(room,function(err,room){
+        if(err){
+            res.sendStatus(500).send(err);
+        }else{
+            res.send(room);
+        }
+    })
+})
+
 module.exports = router;

@@ -10,4 +10,14 @@ angular.module('zhufengchat').controller('RoomsCtrl',function($scope,$http){
       alert(data);
   });
 
+  $scope.createRoom = function(){
+      $http({
+          url:'/room/add',
+          method:'POST',
+          data:{name:$scope.keyword}
+      }).success(function(room){
+          $scope._rooms.push(room);
+      })
+  }
+
 });
